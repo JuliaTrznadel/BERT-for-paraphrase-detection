@@ -1,2 +1,4 @@
 bert-qqp-results/
 mlruns/
+.DS_Store
+logs/
