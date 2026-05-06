@@ -10,7 +10,7 @@ Given two questions from Quora, we obtain two questions as a pair, which include
 
 # Data
 
-We are using glue/qqp via HuggingFaceDatasets. Through data-exploration we found out that around 63% is labeled as not a paraphrase and 37% as a paraphrase. Quite imbalanced, which matters for threshold tuning. Lenght of the questions is mostly short (around 10 words).
+We are using glue/qqp via HuggingFaceDatasets. Through data exploration we found out that around 63% is labeled as not a paraphrase and 37% as a paraphrase. Quite imbalanced, which matters for threshold tuning. Lenght of the questions is mostly short (around 10 words).
 
 Train (full set) - around 364k pairs
 Train (used) - 10 000 pairs
@@ -19,7 +19,7 @@ Validation (used) - 3 000 pairs
 # Approach 
 
 ## TF-IDF and Logistic Regression
-Before BERT we built a simple baseline. Starting with concatinating question1 [SEP] question2 into one string. Then we vectorize with TF-IDF (unigrams and biagrams, top 100k features) and classification with logistic regression (class_weight="balanced" ), to handle imbalance. We trained it on 50k pairs. 
+Before BERT we built a simple baseline. Starting with concatinating question1 [SEP] question2 into one string. Then we vectorize with TF-IDF (unigrams and biagrams, top 100k features) and classification with logistic regression (class_weight="balanced")to handle imbalance. We trained it on 50k pairs. 
 
 ## Main model: Fine-tuned BERT
 
