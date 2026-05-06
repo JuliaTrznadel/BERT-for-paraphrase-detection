@@ -92,5 +92,6 @@ The classes are somewhat imbalanced (63%/37%) and we didn't address it for BERT.
 
 Threshold tuning: Threshold tuning is worth doing, but the F1 curve is quite flat in the 0.35–0.65 range, suggesting the model is well calibrated. At 0.45 only improves F1 by ~0.001 over 0.50.
 
+# Note
 
-
+AI tools were used as a coding support for this project
