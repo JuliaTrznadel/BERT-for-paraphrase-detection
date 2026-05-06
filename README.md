@@ -83,3 +83,14 @@ We also checked false positives and false negatives. Where:
 - false negatives: missed actual duplicates
 
 Questions like "anxiety and depression" vs "anxiety, loneliness and depression" getting 0.877 confidence. Furthermore, "stock market" vs "sensex" (0.008 confidence!), or a typo "auora" is not recognised by the model. These are all limitations. BERT operates on subword tokens and doesn't have lookup-style world knowledge, it doesn't know that sensex is a stock market index. 
+
+# Discussion
+
+Despite training on only 10k examples (2.7% of the full training set), BERT outperforms the TF-IDF baseline trained on 50k examples. It leads to a conclusion that pre-trained representations transfer extremely well to tasks involving paraphrase detection. Although, 10k training examples is a real limitation, keeping in mind that the full QQP training set has 364k pairs.
+
+The classes are somewhat imbalanced (63%/37%) and we didn't address it for BERT. The TF-IDF baseline used class_weight="balanced", but the BERT didn't. Adding class weights or sampling duplicates during fine-tuning would likely boost the performance.
+
+Threshold tuning: Threshold tuning is worth doing, but the F1 curve is quite flat in the 0.35–0.65 range, suggesting the model is well calibrated. At 0.45 only improves F1 by ~0.001 over 0.50.
+
+
+
